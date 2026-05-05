@@ -1,0 +1,86 @@
+{
+  "name": "smart-goto-impl",
+  "displayName": "Smart Go to Implementation",
+  "description": "Single impl opens directly, multiple impls fill References View panel — no Peek.",
+  "version": "0.0.1",
+  "publisher": "mico",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mucahitimre/smart-goto-impl.git"
+  },
+  "homepage": "https://github.com/mucahitimre/smart-goto-impl#readme",
+  "bugs": {
+    "url": "https://github.com/mucahitimre/smart-goto-impl/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "csharp",
+    "c#",
+    "go to implementation",
+    "navigation",
+    "references view",
+    "omnisharp",
+    "dev kit"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:csharp"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "smart-goto-impl.goToImplementation",
+        "title": "Smart: Go to Implementation",
+        "category": "Smart Navigate"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "-workbench.view.scm",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g",
+        "when": "editorTextFocus && editorLangId == 'csharp'"
+      },
+      {
+        "command": "smart-goto-impl.goToImplementation",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g",
+        "when": "editorTextFocus && editorLangId == 'csharp'"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "node esbuild.js --production",
+    "compile-tests": "tsc -p ./",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "vsce:package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "@types/sinon": "^17.0.3",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.22.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "sinon": "^17.0.1",
+    "typescript": "^5.3.3"
+  }
+}
