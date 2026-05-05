@@ -3,5 +3,7 @@ out/
 dist/
 *.vsix
 .vscode-test/
+.vscode/
+.claude/
 .DS_Store
 *.log
